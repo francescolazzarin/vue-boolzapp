@@ -1,0 +1,39 @@
+
+.bg-gradiente{
+    background: linear-gradient(to bottom, rgb(0, 150, 135) 0%,rgb(0, 150, 135) 15%, rgb(217, 219, 215) 15%,rgb(217, 219, 215) 100%);    
+}
+
+.bg-gray{
+    background-color: rgb(235, 235, 235);
+}
+img{
+    width: 50px;
+}
+.text-gray{
+    color: rgb(176, 176, 176);
+}
+.bg-mine{
+    background-image: url(../img/mine.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.sent{
+    background-color: rgb(211, 245, 186);
+    align-self: flex-end;
+}
+.received{
+    background-color: white;
+    align-self: flex-start;
+}
+.bg-azure{
+    background-color: rgb(140, 215, 250);
+}
+.fa-bell-slash{
+    color:rgb(140, 215, 250) ;
+}
+.h-10{
+    height: 10%;
+}
+.h-90{
+    height: 90%;
+}
