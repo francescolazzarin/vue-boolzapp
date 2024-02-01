@@ -32,10 +32,10 @@
                 </div>
                 <div class="input-group p-2 bg-light">
                     <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" aria-label="First name" class="form-control" placeholder="Cerca o inizia una nuova chat">
+                    <input v-model="ricercaUtente" @keyup="filtraContatti" type="text" aria-label="First name" class="form-control" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <div class="overflow-y-auto flex-grow-1">
-                    <div @click="mostraConversazione(index)" class="d-flex bg-light p-2" v-for="(element,index) in contacts" :key="index">
+                    <div @click="mostraConversazione(index)" v-show="element.visible" :class="element.visible ?' d-flex bg-light p-2': '' " v-for="(element,index) in contacts" :key="index">
                         <img class="rounded-circle" :src="element.avatar" alt="">
                         <div>
                             <p class="mb-0">{{element.name}}</p>

@@ -16,11 +16,14 @@ createApp({
     data() {
         return {
             contattoAttivo:0,
+            ricercaUtente:"",
+            visible:true,
+            testoNuovoMessaggio:"",
             contacts: [
                 {
                     name: 'Michele',
                     avatar: './img/avatar_1.jpg',
-                    visible: true,
+                    visible: false,
                     messages: [
                         {
                         date: '10/01/2020 15:30:55',
@@ -209,6 +212,15 @@ createApp({
                 this.contacts[contattoAttivo].messages.push(messaggioUtente)
             },1000)
             this.testoNuovoMessaggio=""
+        },
+        filtraContatti() {
+            this.contacts.forEach(element => {
+                if (element.name.toLowerCase().includes(this.ricercaUtente.toLowerCase())){
+                    element.visible=true
+                }else{
+                    element.visible=false
+                }
+            });
         }
     }
 }).mount('#app')
