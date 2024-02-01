@@ -48,17 +48,25 @@
                             <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
                             <input type="text" aria-label="First name" class="form-control" placeholder="Cerca o inizia una nuova chat">
                         </div>
-                        <div @click="mostraConversazione(element)" v-for="(element,index) in contacts" :key="index" class="mb-3">
+                        <div class="d-flex mb-3" @click="mostraConversazione(element)" v-for="(element,index) in contacts" :key="index">
                             <img v-if="element.name !== 'io'" class="rounded-circle" :src="element.avatar" alt="">
-                            <span v-if="element.name !== 'io'">{{element.name}}</span>
+                            <div>
+                                <p class="mb-0" v-if="element.name !== 'io'">{{element.name}}</p>
+                                <span  v-if="element.messages && element.messages.length > 0">ultimo messaggio: {{ orario(element.messages[element.messages.length - 1].date) }} </span>
+                            </div>
                         </div>
                     </div>
-                    <div class="h-100 col-8 overflow-y-auto bg-mine pt-2">
+                    <div class="h-100 px-0 col-8 position-relative overflow-y-auto bg-mine pt-2">
                         <div class="d-flex flex-column" v-if="contattoAttivo">
                             <div class="mb-3 p-2" :class="(message.status==='sent')? 'sent': 'received'" v-for="(message, index) in contattoAttivo.messages" :key="index">
                                 {{message.message}} 
                                 <p>{{orario(message.date)}}</p>
                             </div>
+                        </div>
+                        <div class="input-group bg-light position-absolute">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-face-smile"></i></span>
+                            <input @keydown.enter="inviaNuovoMessaggio" v-model="testoNuovoMessaggio" type="text" class="form-control" placeholder="Nuovo messaggio"aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-microphone"></i></span>
                         </div>
                     </div>
                 </div>

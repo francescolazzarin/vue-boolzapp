@@ -20,10 +20,12 @@ img{
 .sent{
     background-color: rgb(211, 245, 186);
     align-self: flex-end;
+    margin-right: 10px;
 }
 .received{
     background-color: white;
     align-self: flex-start;
+    margin-left: 10px;
 }
 .bg-azure{
     background-color: rgb(140, 215, 250);
@@ -36,4 +38,7 @@ img{
 }
 .h-90{
     height: 90%;
+}
+div.position-absolute{
+    bottom: 0;
 }

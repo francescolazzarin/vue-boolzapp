@@ -201,10 +201,20 @@ createApp({
            this.contattoAttivo=index
         },
         orario(date) {
-            const ora = new Date(date).getHours()
-            const minuti = new Date(date).getMinutes()
-            const secondi = new Date(date).getSeconds()
-            return `${ora}:${minuti}:${secondi}`
-          },
+          
+            const [, orario] = date.split(' ')
+            const [ore, minuti] = orario.split(':')
+    
+            return `${ore.toString().padStart(2, '0')}:${minuti.toString().padStart(2, '0')}`
+        },
+        inviaNuovoMessaggio(){
+            const nuovoMessaggio = {
+                date: new Date().toLocaleString(),
+                message: this.testoNuovoMessaggio,
+                status: 'sent' 
+            }
+            this.contattoAttivo.messages.push(nuovoMessaggio)
+            this.testoNuovoMessaggio=""
+        }
     }
 }).mount('#app')
