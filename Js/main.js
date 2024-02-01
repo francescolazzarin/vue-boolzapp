@@ -178,25 +178,11 @@ createApp({
                         }
                     ],
                 },
-                {
-                    name:'io',
-                    avatar:'./img/avatar_io.jpg'
-                }
+              
             ]
         }
     },
     methods:{
-        // mio avatar
-        imgMioAvatar(){
-            let url=""
-            for (key in this.contacts) {
-                if (this.contacts[key].name ==='io') {
-                    url=this.contacts[key].avatar    
-                    break
-                }
-            }
-            return url
-        },
         mostraConversazione(index){
            this.contattoAttivo=index
         },
@@ -207,13 +193,21 @@ createApp({
     
             return `${ore.toString().padStart(2, '0')}:${minuti.toString().padStart(2, '0')}`
         },
-        inviaNuovoMessaggio(){
+        inviaNuovoMessaggio(contattoAttivo){
             const nuovoMessaggio = {
                 date: new Date().toLocaleString(),
                 message: this.testoNuovoMessaggio,
                 status: 'sent' 
             }
-            this.contattoAttivo.messages.push(nuovoMessaggio)
+            this.contacts[contattoAttivo].messages.push(nuovoMessaggio)
+            setTimeout(()=>{
+                const messaggioUtente={
+                    date:new Date().toLocaleString(),
+                    message:'ok',
+                    status:'received',
+                }
+                this.contacts[contattoAttivo].messages.push(messaggioUtente)
+            },1000)
             this.testoNuovoMessaggio=""
         }
     }
